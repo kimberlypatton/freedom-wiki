@@ -1,8 +1,8 @@
 
-<h4>Welcome <%= @user.fullname %></h4>
+<h4>Welcome <%= current_user.fullname %></h4>
 <h3>Featured Articles</h3>
 
-
+  <% if @featured_articles %>
     <% @featured_articles.each do |article| %>
         <h5><%= article.name %></h5>
           <div>
@@ -10,4 +10,5 @@
             <p>Author: <%= article.user.fullname %></p>
           </div>
     <% end %>
+  <% end %>
 
