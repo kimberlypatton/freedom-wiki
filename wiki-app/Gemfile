@@ -39,6 +39,7 @@ group :development, :test do
   end
   gem 'launchy'
   gem 'capybara'
+  gem 'rails-controller-testing'
 end
 
 group :development do
