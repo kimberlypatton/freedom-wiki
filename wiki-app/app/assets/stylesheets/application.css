@@ -19,3 +19,8 @@ body {
   width: 50em;
   padding: 5em;
 }
+
+nav, li {
+  display: inline-block;
+  margin: 0.5em;
+}
