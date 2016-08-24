@@ -1,0 +1,8 @@
+<h1>All Groups</h1>
+
+<% Group.each do |group| %>
+  <div>
+    <%= group.name %>
+    <%= group.description %><br>
+  </div>
+<% end %>
