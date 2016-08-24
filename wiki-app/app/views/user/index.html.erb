@@ -1,0 +1,13 @@
+
+<h4>Welcome <%= @user.fullname %></h4>
+<h3>Featured Articles</h3>
+
+
+    <% @featured_articles.each do |article| %>
+        <h5><%= article.name %></h5>
+          <div>
+            <p><%= article.content %></p>
+            <p>Author: <%= article.user.fullname %></p>
+          </div>
+    <% end %>
+
