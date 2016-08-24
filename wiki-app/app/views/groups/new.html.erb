@@ -1,0 +1,15 @@
+<h1>Create New Group</h1>
+
+<%= form_for :group, url:'/groups', method: :post do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div>
+    <%= f.submit "Submit New Group" %>
+  </div>
+<% end  %>
