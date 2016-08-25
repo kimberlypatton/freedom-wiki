@@ -15,7 +15,8 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
 
     if @group.save
-      redirect_to @group, notice: 'Group was created successfully.'
+      Membership.create(user: current_user, group: @group, role: "admin")
+      redirect_to group_path(@group), notice: 'Group was created successfully.'
     else
       render :new
     end
