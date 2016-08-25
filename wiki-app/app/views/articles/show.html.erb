@@ -1,6 +1,7 @@
 <h1><%= @article.name %></h1>
 
     <div class="group-article-view">
+        <p class="group-link">From Group: <%= link_to @article.group.name, "/groups/#{@article.group.id}" %></p>
         <p><%= raw(@article.content) %></p>
         <p>Author: <%= @article.user.fullname %></p>
         <p>Created: <%= @article.created_at.strftime("%d %b. %Y") %></p>
