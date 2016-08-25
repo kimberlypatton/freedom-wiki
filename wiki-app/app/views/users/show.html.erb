@@ -1,20 +1,18 @@
 
-<h3>Welcome <%= current_user.fullname %></h3>
-
-
-  <% if @group_articles.length > 0 %>
-    <h5>Most Recent Articles From your Groups:</h5>
-      <% @group_articles.each do |article| %>
-      <div class="profile-view">
-          <div class="profile-view-header">
-              <p>From Group: <%= article.group.name %></p>
-          </div>
-            <p><%= article.name.capitalize %></p>
-            <p><%= article.content.capitalize %></p>
-            <p>Author: <%= article.user.fullname %></p>
-          </div>
-      <% end %>
-    <% else %>
-    <h5>Join some groups to see more content.</h5>
-  <% end %>
+  <h3>Welcome <%= current_user.fullname %></h3>
+    <% if @group_articles.length > 0 %>
+      <h5>Most Recent Articles From your Groups:</h5>
+        <% @group_articles.each do |article| %>
+        <div class="profile-view">
+            <div class="profile-view-header">
+                <p>From Group: <%= article.group.name %></p>
+            </div>
+              <p><%= article.name.capitalize %></p>
+              <p><%= article.content.capitalize %></p>
+              <p>Author: <%= article.user.fullname %></p>
+            </div>
+        <% end %>
+      <% else %>
+      <h5>Join some groups to see more content.</h5>
+    <% end %>
 
