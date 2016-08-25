@@ -1,7 +1,11 @@
 <h1><%= @article.name %></h1>
 
-  <div>
-    <%= raw(@article.content) %>
-    <br>
-  </div>
+    <div class="group-article-view">
+        <p><%= raw(@article.content) %></p>
+        <p>Author: <%= @article.user.fullname %></p>
+        <p>Created: <%= @article.created_at.strftime("%d %b. %Y") %></p>
+      <br>
+    </div>
+
+
 

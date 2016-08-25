@@ -1,0 +1,3 @@
+<% unless @group.members.include?(current_user) %>
+  <div><%= @group.description %></div>
+<% else %>
