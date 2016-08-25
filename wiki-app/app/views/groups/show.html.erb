@@ -1,11 +1,16 @@
 <h1><%= @group.name %></h1>
 
+<% unless @group.users.include?(current_user) %>
 <div><%= @group.description %></div>
+<% else %>
 <br>
 <% @group.articles.each do |article| %>
-  <div>
-    <%= article.name %>
-    <%= article.content %>
+  <div class="group-article-view">
+      <p><%= article.name %></p>
+      <p><%= article.content %></p>
+      <p>Author: <%= article.user.fullname %></p>
+      <p>Created: <%= article.created_at.strftime("%d %b. %Y") %></p>
     <br>
   </div>
+<% end %>
 <% end %>

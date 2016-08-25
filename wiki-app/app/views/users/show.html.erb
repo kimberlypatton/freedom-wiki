@@ -5,11 +5,15 @@
         <% @group_articles.each do |article| %>
         <div class="profile-view">
             <div class="profile-view-header">
-                <p>From Group: <%= article.group.name %></p>
+
             </div>
-              <p><%= article.name.capitalize %></p>
+              <p class="article-title"><%= article.name.capitalize %></p>
+              <p class="group-link">From Group: <%= link_to article.group.name, "/groups/#{article.group.id}" %></p>
               <p><%= article.content.capitalize %></p>
-              <p>Author: <%= article.user.fullname %></p>
+              <ul>
+                <li class="group-link">Author: <%= article.user.fullname %></li><br>
+                <li class="group-link">Created: <%= article.created_at.strftime("%d %b. %Y") %></li>
+              </ul>
             </div>
         <% end %>
       <% else %>
