@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
   def show
-    @featured_articles = current_user.featured_articles
+    if current_user
+      @featured_articles = current_user.featured_articles
+    else
+      redirect_to login_path
+    end
   end
 
   def new
