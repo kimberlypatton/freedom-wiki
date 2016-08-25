@@ -4,7 +4,11 @@
         <p><%= raw(@article.content) %></p>
         <p>Author: <%= @article.user.fullname %></p>
         <p>Created: <%= @article.created_at.strftime("%d %b. %Y") %></p>
-        <%= link_to "edit", edit_article_path(@article) %>
+
+        <% if current_user.id == @article.user.id %>
+          <%= link_to "edit", edit_article_path(@article) %>
+          <%= link_to 'Delete Article',  article_path(@article), data: { confirm: 'Are you sure?' }, method: :delete %>
+        <% end %>
       <br>
     </div>
 

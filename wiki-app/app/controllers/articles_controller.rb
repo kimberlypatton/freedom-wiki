@@ -24,8 +24,9 @@ class ArticlesController < ApplicationController
 
   def destroy
     article = Article.find(params[:id])
+    group = article.group
     article.destroy
-    redirect_to articles_url, notice: 'Article was deleted successfully.'
+    redirect_to group_path(group), notice: 'Article was deleted successfully.'
   end
 
    def edit
