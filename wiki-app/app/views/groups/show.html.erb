@@ -1,13 +1,14 @@
 <h1><%= @group.name %></h1>
 
 <% unless @group.members.include?(current_user) %>
-<div><%= @group.description %></div>
+  <div><%= @group.description %></div>
 <% else %>
+
 <br>
   <% @group.articles.each do |article| %>
     <div class="group-article-view">
         <p><%= article.name %></p>
-        <p><%= article.content %></p>
+        <p><%= raw(article.content) %></p>
         <p>Author: <%= article.user.fullname %></p>
         <p>Created: <%= article.created_at.strftime("%d %b. %Y") %></p>
       <br>
@@ -15,3 +16,4 @@
   <% end %>
 <% end %>
 <%= link_to 'Create New Article', new_group_article_path(current_user) %>
+<%= console %>
