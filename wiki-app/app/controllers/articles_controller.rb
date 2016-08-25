@@ -8,14 +8,15 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    @group = Group.find(params[:group_id])
   end
 
   def create
-    @article = Article.new(article_params)
-
+    @group = Group.find(params[:group_id])
+    @article = @group.articles.new(article_params)
+    @article.user = current_user
     if @article.save
-      redirect_to @article, notice: 'Article was created successfully.'
+      redirect_to article_path(@article), notice: 'Article was created successfully.'
     else
       render :new
     end
@@ -27,9 +28,23 @@ class ArticlesController < ApplicationController
     redirect_to articles_url, notice: 'Article was deleted successfully.'
   end
 
+   def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    if @article.update_attributes(article_params)
+      redirect_to articles_path, notice: "The article has been updated successfully."
+    else
+      render action: "edit"
+    end
+  end
+
+
   private
   def article_params
-    params.require(:article).permit(:name, :description)
+    params.require(:article).permit(:name, :content)
   end
 
 end
