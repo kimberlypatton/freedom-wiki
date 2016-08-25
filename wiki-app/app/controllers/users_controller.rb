@@ -1,14 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-
-     @users_groups = current_user.groups
-     @group_articles = []
-     @users_groups.each do |group|
-        group.articles.each do |article|
-          @group_articles << article
-        end
-     end
+    @featured_articles = current_user.featured_articles
   end
 
   def new

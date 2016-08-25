@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
   <h3>Welcome <%= current_user.fullname %></h3>
     <% if @group_articles.length > 0 %>
       <h5>Most Recent Articles From your Groups:</h5>
@@ -20,4 +21,24 @@
       <h5>Join some groups to see more content.</h5>
       <%= link_to 'Create New Group', new_group_path %>
     <% end %>
+=======
+<h3>Welcome <%= current_user.fullname %></h3>
+  <% if @featured_articles %>
+    <h5>Most Recent Articles From your Groups:</h5>
+      <% @featured_articles.each do |article| %>
+      <div class="profile-view">
+          <div class="profile-view-header"></div>
+            <p class="article-title"><%= article.name.capitalize %></p>
+            <p class="group-link">From Group: <%= link_to article.group.name, "/groups/#{article.group.id}" %></p>
+            <p><%= article.content.capitalize %></p>
+            <ul>
+              <li class="group-link">Author: <%= article.user.fullname %></li><br>
+              <li class="group-link">Created: <%= article.created_at.strftime("%d %b. %Y") %></li>
+            </ul>
+          </div>
+      <% end %>
+    <% else %>
+    <h5>Join some groups to see more content.</h5>
+  <% end %>
+>>>>>>> master
 

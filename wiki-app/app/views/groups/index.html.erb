@@ -1,11 +1,10 @@
 <h1>All Groups</h1>
 
 <% @groups.each do |group| %>
-  <div>
-    <ul>
-      <li><%= link_to group.name, group_path(group) %></li>
-      <li><%= group.description[0..100] %>...<br></li>
-      <li>Members: <%= group.members.count %></li>
-    </ul>
-  </div>
+  <ul>
+    <li><%= link_to group.name, group_path(group) %></li>
+    <li><%= group.description[0..100] %>...</li>
+    <li><%= group.member_count %> members</li>
+  </ul>
+
 <% end %>
