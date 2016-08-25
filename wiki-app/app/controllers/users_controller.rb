@@ -1,8 +1,14 @@
 class UsersController < ApplicationController
 
   def show
-    # @user = User.find(current_user)
-    # @featured_articles = @user.groups.articles
+     @user = User.find(current_user)
+     @users_groups = @user.groups
+     @group_articles = []
+     @users_groups.each do |group|
+        group.articles.each do |article|
+          @group_articles << article
+        end
+     end
   end
 
   def new
