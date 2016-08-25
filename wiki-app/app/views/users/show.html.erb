@@ -1,4 +1,3 @@
-
 <h3>Welcome <%= current_user.fullname %></h3>
   <% if @featured_articles %>
     <h5>Most Recent Articles From your Groups:</h5>
@@ -17,4 +16,5 @@
     <% else %>
     <h5>Join some groups to see more content.</h5>
   <% end %>
+  <%= link_to 'Create New Group', new_group_path %>
 
