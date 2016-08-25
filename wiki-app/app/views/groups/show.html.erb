@@ -1,6 +1,6 @@
 <h1><%= @group.name %></h1>
 
-<% unless @group.users.include?(current_user) %>
+<% unless @group.members.include?(current_user) %>
 <div><%= @group.description %></div>
 <% else %>
 <br>
@@ -14,3 +14,4 @@
   </div>
 <% end %>
 <% end %>
+<%= link_to 'Create New Article', new_article_path %>
