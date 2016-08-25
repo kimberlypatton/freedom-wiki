@@ -4,4 +4,8 @@ class Group < ActiveRecord::Base
   has_many :members, :through => :memberships, :source => :user
 
   has_many :articles
+
+  def member_count
+    self.members.count
+  end
 end
