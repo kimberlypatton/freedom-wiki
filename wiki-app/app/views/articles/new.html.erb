@@ -3,9 +3,9 @@
     <%= f.text_field :name %>
     <br>
     <%= f.cktext_area :content, ckeditor: {uiColor: '#AADC6E', tpplbar: 'mini'} %>
-    <%= @group.categories.each do |category| %>
-      <%= check_box_tag(category) %>
-      <%= label_tag(category, category.name) %>
+    <% @group.categories.each do |category| %>
+        <%= label_tag(category, category.name) %>
+        <%= check_box_tag('category[]',category.id) %><br>
     <% end %>
     <%= f.submit %>
     <% end %>

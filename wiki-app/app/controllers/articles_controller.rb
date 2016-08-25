@@ -16,6 +16,8 @@ class ArticlesController < ApplicationController
     @article = @group.articles.new(article_params)
     @article.user = current_user
     if @article.save
+      @category = Category.where(id: params[:category])
+      @article.categories.push(@category)
       redirect_to article_path(@article), notice: 'Article was created successfully.'
     else
       render :new

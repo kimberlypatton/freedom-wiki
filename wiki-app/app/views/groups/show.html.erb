@@ -1,12 +1,13 @@
 <h1><%= @group.name %></h1>
 <br>
-  <%= @group.categories.each do |category| %>
-    <%= category.name %>
+  <% @group.categories.each do |category| %>
+    <%= category.name %><br>
     <% category.articles.each do |article| %>
       <%= link_to article.name, article_path(article) %><br>
     <% end %>
-  <%= end %>
+  <% end %>
 <br>
+<%= link_to 'Create New Category', new_group_category_path(current_user) %>
 <%= link_to 'Create New Article', new_group_article_path(current_user) %>
 
 
