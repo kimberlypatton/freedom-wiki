@@ -13,7 +13,6 @@ class ArticlesController < ApplicationController
 
   def create
     @group = Group.find(params[:group_id])
-    binding.pry
     @article = @group.articles.new(article_params)
     @article.user = current_user
     if @article.save
