@@ -4,6 +4,7 @@
         <p><%= raw(@article.content) %></p>
         <p>Author: <%= @article.user.fullname %></p>
         <p>Created: <%= @article.created_at.strftime("%d %b. %Y") %></p>
+        <%= link_to "edit", edit_article_path(@article) %>
       <br>
     </div>
 
