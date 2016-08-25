@@ -24,3 +24,10 @@ nav, li {
   display: inline-block;
   margin: 0.5em;
 }
+
+.profile-view {
+  border: 1px solid grey;
+  margin-bottom: 50px;
+  padding: 10px 15px 5px 15px;
+}
+
