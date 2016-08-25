@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  get '/profile' => 'users#show'
+
   # auth routes
   get '/sign-up' => 'users#new'
   get '/login' => 'sessions#new'
