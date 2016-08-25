@@ -1,17 +1,9 @@
 <h1><%= @group.name %></h1>
-
-<% unless @group.members.include?(current_user) %>
-<div><%= @group.description %></div>
-<% else %>
 <br>
   <% @group.articles.each do |article| %>
-    <div class="group-article-view">
-        <p><%= article.name %></p>
-        <p><%= article.content %></p>
-        <p>Author: <%= article.user.fullname %></p>
-        <p>Created: <%= article.created_at.strftime("%d %b. %Y") %></p>
-      <br>
-    </div>
+    <%= link_to article.name, article_path(article) %><br>
   <% end %>
-<% end %>
-<%= link_to 'Create New Article', new_article_path %>
+<br>
+<%= link_to 'Create New Article', new_group_article_path(current_user) %>
+
+
