@@ -4,9 +4,12 @@ Rails.application.routes.draw do
 
   resources :groups do
     resources :articles, shallow: true
+    resources :memberships, only: [:create, :destroy, :update]
   end
 
-  resources :users
+  resources :users do
+    resources :memberships, only: [:destroy, :create]
+  end
 
   get '/profile' => 'users#show'
 
