@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   resources :groups do
     resources :articles, shallow: true
+    resources :categories, shallow: true
     resources :memberships, only: [:create, :destroy, :update]
+
+    get 'admin' => 'admin#panel'
   end
 
   resources :users do

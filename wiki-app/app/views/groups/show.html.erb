@@ -1,5 +1,9 @@
 <h1><%= @group.name %></h1>
 
+<% if current_user == @group.admin %>
+  <%= link_to 'Admin Panel', group_admin_path(@group) %>
+<% end %>
+
 <% unless @group.members.include?(current_user) %>
   <div><%= button_to "Join Group", group_memberships_path(@group) %></div>
 <% end %>
@@ -8,6 +12,5 @@
   <%= link_to article.name, article_path(article) %><br>
 <% end %>
 
-<%= link_to 'Create New Article', new_group_article_path(current_user) %>
 
 

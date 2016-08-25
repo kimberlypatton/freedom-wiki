@@ -5,6 +5,10 @@ class Group < ActiveRecord::Base
 
   has_many :articles
 
+  def admin
+    memberships.where(role: 'admin').first.user
+  end
+
   def member_count
     self.members.count
   end
