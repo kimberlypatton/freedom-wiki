@@ -4,6 +4,6 @@ class MembershipsController < ApplicationController
     if current_user
       Membership.create(user: current_user, group_id: params[:group_id], role: "pending" )
     end
-    redirect_to groups_path
+    redirect_to group_path(params[:group_id])
   end
 end
