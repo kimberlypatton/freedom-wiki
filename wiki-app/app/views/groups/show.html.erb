@@ -4,14 +4,14 @@
 <div><%= @group.description %></div>
 <% else %>
 <br>
-<% @group.articles.each do |article| %>
-  <div class="group-article-view">
-      <p><%= article.name %></p>
-      <p><%= article.content %></p>
-      <p>Author: <%= article.user.fullname %></p>
-      <p>Created: <%= article.created_at.strftime("%d %b. %Y") %></p>
-    <br>
-  </div>
-<% end %>
+  <% @group.articles.each do |article| %>
+    <div class="group-article-view">
+        <p><%= article.name %></p>
+        <p><%= article.content %></p>
+        <p>Author: <%= article.user.fullname %></p>
+        <p>Created: <%= article.created_at.strftime("%d %b. %Y") %></p>
+      <br>
+    </div>
+  <% end %>
 <% end %>
 <%= link_to 'Create New Article', new_article_path %>
