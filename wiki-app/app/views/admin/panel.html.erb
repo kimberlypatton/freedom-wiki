@@ -1,0 +1,48 @@
+<h1>Admin Panel</h1>
+
+<!-- tabs -->
+<ul class="tabs">
+    <li class="active"><span tab="#members">Members</span></li>
+    <li><span tab="#categories">Categories</span></li>
+    <li><span tab="#whole_self">Whole Self</span></li>
+</ul>
+
+
+<!-- content -->
+<!-- member management -->
+<div class="tab-content" id="members">
+  <h4>Members</h4>
+
+  <table class="u-full-width admin-panel">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @group.memberships.each do |membership| %>
+      <tr>
+        <td><%= membership.user.fullname %></td>
+        <td><%= membership.role %></td>
+        <td>
+          <%= render partial: "admin/buttons/#{action_button(membership)}",
+                     locals: { membership: membership } %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<!-- category management -->
+<div class="tab-content" id="categories">
+  <h4>Categories</h4>
+  <%= link_to 'Create New Category', new_group_category_path(@group) %>
+</div>
+
+<div class="tab-content" id="whole_self">
+  <h4>Whole Self</h4>
+  <p>you are awesome, be yourself</p>
+</div>
