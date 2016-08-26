@@ -22,7 +22,7 @@
       </tr>
     </thead>
     <tbody>
-    <% @group.memberships.each do |membership| %>
+    <% @memberships.each do |membership| %>
       <tr>
         <td><%= membership.user.fullname %></td>
         <td><%= membership.role %></td>
@@ -40,6 +40,11 @@
 <div class="tab-content" id="categories">
   <h4>Categories</h4>
   <%= link_to 'Create New Category', new_group_category_path(@group) %>
+  <ul>
+    <% @group.categories.each do |category| %>
+      <li><%= category.name %></li>
+    <% end %>
+  </ul>
 </div>
 
 <div class="tab-content" id="whole_self">

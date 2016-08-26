@@ -1,10 +1,9 @@
+
 <h1><%= @group.name %></h1>
 <% unless @group.members.include?(current_user) %>
   <p><%= @group.description %></p>
   <div><%= button_to "Join Group", group_memberships_path(@group) %></div>
 <% else %>
-
-
   <br>
     <div class ="side-bar">
     <ul>
@@ -13,9 +12,6 @@
         <div id="nav-item">
           <%= link_to category.name, group_category_path(@group, category) %>
         </div>
-  <!--       <% category.articles.each do |article| %>
-          <%= link_to article.name, article_path(article) %><br>
-        <% end %> -->
       <% end %>
       </ul>
     </div>
