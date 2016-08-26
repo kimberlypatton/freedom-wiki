@@ -13,8 +13,7 @@ class CategoriesController < ApplicationController
 
   def create
     @group = Group.find(params[:group_id])
-    @category = @group.categories.new(category_params)
-    @group.categories.push(@category)
+    @category = @group.categories.find_or_create_by(category_params)
     if @category.save
       redirect_to category_path(@category), notice: 'Category was created successfully.'
     else
