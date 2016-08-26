@@ -20,7 +20,7 @@ body {
   padding: 2em;
 }
 
-nav, li {
+nav li {
   display: inline-block;
   margin: 0.5em;
 }
@@ -42,4 +42,31 @@ nav, li {
 }
 .article-title{
   font-size: 1.2em;
+}
+
+.side-bar {
+  width: 200px;
+  background-color: #555;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 0px;
+  width: 150px;
+  height: 100%;
+
+}
+.nav-item{
+  height: 15px;
+  width: 200px;
+  padding:10px;
+
+}
+
+.side-bar li {
+  display: block;
+}
+.side-bar li:hover {
+
+/*    color: grey;*/
 }

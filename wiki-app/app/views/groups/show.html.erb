@@ -1,21 +1,27 @@
 <h1><%= @group.name %></h1>
 <br>
+  <div class ="side-bar">
+  <ul>
 
-  <% @group.categories.each do |category| %>
-    <%= category.name %><br>
-    <% category.articles.each do |article| %>
-      <%= link_to article.name, article_path(article) %><br>
+    <% @group.categories.each do |category| %>
+      <div class="nav-item">
+        <%= link_to category.name, category_path(category) %>
+      </div><br>
+<!--       <% category.articles.each do |article| %>
+        <%= link_to article.name, article_path(article) %><br>
+      <% end %> -->
     <% end %>
-  <% end %>
+    </ul>
+  </div>
 
 <!-- refactor into group nav -->
-<% if current_user == @group.admin %>
-  <%= link_to 'Admin Panel', group_admin_path(@group) %><br>
-<% end %>
+    <% if current_user == @group.admin %>
+      <%= link_to 'Admin Panel', group_admin_path(@group) %><br>
+    <% end %>
 
-<% unless @group.members.include?(current_user) %>
-  <div><%= button_to "Join Group", group_memberships_path(@group) %></div>
-<% else %>
-  <%= link_to 'Create New Article', new_group_article_path(@group) %><br>
-  <%= link_to 'Create New Category', new_group_category_path(@group) %>
-<% end %>
+    <% unless @group.members.include?(current_user) %>
+      <div><%= button_to "Join Group", group_memberships_path(@group) %></div>
+    <% else %>
+      <%= link_to 'Create New Article', new_group_article_path(@group) %><br>
+    <!--   <%= link_to 'Create New Category', new_group_category_path(@group) %> -->
+    <% end %>
