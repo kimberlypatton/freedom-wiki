@@ -16,6 +16,5 @@
 <% unless @group.members.include?(current_user) %>
   <div><%= button_to "Join Group", group_memberships_path(@group) %></div>
 <% else %>
-  <%= link_to 'Create New Article', new_group_article_path(@group) %><br>
-  <%= link_to 'Create New Category', new_group_category_path(@group) %>
+  <%= link_to 'Create New Article', new_group_article_path(@group) %>
 <% end %>

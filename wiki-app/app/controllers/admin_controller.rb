@@ -3,6 +3,7 @@ class AdminController < ApplicationController
 
   def panel
     @group = Group.find(params[:group_id])
+    @memberships = @group.memberships.where.not(role: 'admin').order(role: :desc)
   end
 
   private

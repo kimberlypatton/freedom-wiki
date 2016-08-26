@@ -20,7 +20,7 @@ body {
   padding: 2em;
 }
 
-nav, li {
+nav li {
   display: inline-block;
   margin: 0.5em;
 }
