@@ -1,2 +1,24 @@
-<h1>welcome!</h1>
+<h1>Welcome!</h1>
 
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:word, "Search for:") %>
+  <%= text_field_tag(:word) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<% if @search_result_array %>
+
+  <h5>Search Results:</h5>
+  <% @search_result_array.each do |article| %>
+    <div class="profile-view">
+      <div class="profile-view-header"></div>
+        <p class="article-title"><%= article.name.capitalize %></p>
+        <p class="group-link">From Group: <%= link_to article.group.name, "/groups/#{article.group.id}" %></p>
+        <p><%= raw(article.content) %></p>
+        <ul>
+        <li class="group-link">Author: <%= article.user.fullname %></li><br>
+        <li class="group-link">Created: <%= article.created_at.strftime("%d %b. %Y") %></li>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
