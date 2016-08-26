@@ -5,6 +5,7 @@ describe Article do
   let(:group){Group.create(name:"Name", description: "This is a group description.")}
   let(:article){Article.new(name: "Sports is cool", content: "Hey, this is the content of this article!!", user_id: user.id, group_id: group.id)}
   let(:article2){Article.new(content: "Hey, this is the content of this article!!")}
+
   describe "validations" do
     it "is valid when it has a name and content" do
       expect(article).to be_valid
@@ -15,7 +16,6 @@ describe Article do
   end
 
   describe "group attributes" do
-
     it "has a name" do
       expect(article.name).to eq "Sports is cool"
     end
@@ -31,6 +31,5 @@ describe Article do
     it "has a group" do
       expect(article.group).to eq group
     end
-
   end
 end

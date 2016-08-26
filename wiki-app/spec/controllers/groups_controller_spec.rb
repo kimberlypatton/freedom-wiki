@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe GroupsController do
+xdescribe GroupsController do
   let(:group){Group.create(name:"Name", description: "This is a group description.")}
   let(:group2){Group.new(description: "This is a group description.")}
 
