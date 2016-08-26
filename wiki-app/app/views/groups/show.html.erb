@@ -1,27 +1,47 @@
 <h1><%= @group.name %></h1>
-<br>
-  <div class ="side-bar">
-  <ul>
+<% unless @group.members.include?(current_user) %>
+  <p><%= @group.description %></p>
+  <div><%= button_to "Join Group", group_memberships_path(@group) %></div>
+<% else %>
 
-    <% @group.categories.each do |category| %>
-      <div class="nav-item">
-        <%= link_to category.name, category_path(category) %>
-      </div><br>
-<!--       <% category.articles.each do |article| %>
-        <%= link_to article.name, article_path(article) %><br>
-      <% end %> -->
-    <% end %>
-    </ul>
-  </div>
+
+  <br>
+    <div class ="side-bar">
+    <ul>
+      <li class="nav-item">Categories</li>
+      <% @group.categories.each do |category| %>
+        <div id="nav-item">
+          <%= link_to category.name, group_category_path(@group, category) %>
+        </div>
+  <!--       <% category.articles.each do |article| %>
+          <%= link_to article.name, article_path(article) %><br>
+        <% end %> -->
+      <% end %>
+      </ul>
+    </div>
 
 <!-- refactor into group nav -->
     <% if current_user == @group.admin %>
       <%= link_to 'Admin Panel', group_admin_path(@group) %><br>
+    <% end %><br>
+
+    <% if @groups_articles %>
+      <h4>Most recent articles:</h4>
+      <% @groups_articles.each do |article| %>
+           <div class="profile-view">
+      <div class="profile-view-header"></div>
+        <p class="article-title"><%= article.name.capitalize %></p>
+        <p class="group-link">From Group: <%= link_to article.group.name, "/groups/#{article.group.id}" %></p>
+        <p><%= raw(article.content) %></p>
+        <ul>
+        <li class="group-link">Author: <%= article.user.fullname %></li><br>
+        <li class="group-link">Created: <%= article.created_at.strftime("%d %b. %Y") %></li>
+      </ul>
+    </div>
+      <% end %>
     <% end %>
 
-    <% unless @group.members.include?(current_user) %>
-      <div><%= button_to "Join Group", group_memberships_path(@group) %></div>
-    <% else %>
+
       <%= link_to 'Create New Article', new_group_article_path(@group) %><br>
     <!--   <%= link_to 'Create New Category', new_group_category_path(@group) %> -->
     <% end %>
