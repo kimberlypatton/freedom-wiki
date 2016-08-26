@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  validates :name, :description, {presence: true}
+  validates_presence_of :name, :description
   has_many :memberships
   has_many :members, :through => :memberships, :source => :user
 

@@ -1,0 +1,7 @@
+<%= form_for :article, url:"/articles/#{@article.id}", method: :put do |f| %>
+    <%= label_tag :name %>
+    <%= f.text_field :name, :value => "#{@article.name}" %>
+    <br>
+    <%= f.cktext_area :content, ckeditor: {uiColor: '#AADC6E', tpplbar: 'mini'}, :value => "#{@article.content}" %>
+    <%= f.submit %>
+    <% end %>
