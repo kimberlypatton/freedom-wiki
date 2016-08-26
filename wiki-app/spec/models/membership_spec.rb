@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 describe Membership do
-let(:group){ Group.create!(name:"Name", description: "This is a group description.") }
-let(:user) { User.create!(first_name: 'bob',
+  let(:group){ Group.create!(name:"Name", description: "This is a group description.") }
+  let(:user) { User.create!(first_name: 'bob',
                           email: 'bob@bob.com',
                           last_name: 'doe',
                           password: 'test'
                           )}
-let(:membership) { Membership.create!(group: group, user: user, role: 'admin') }
+  let(:membership) { Membership.create!(group: group, user: user, role: 'admin') }
 
   context 'validations' do
     subject { Membership.new(role:'member') }
