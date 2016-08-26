@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :require_admin
+
   def index
     @categories = Category.all
   end
@@ -47,4 +49,9 @@ class CategoriesController < ApplicationController
     params.require(:category).permit(:name)
   end
 
+  def require_admin
+    unless Group.find(params[:group_id]).admin == current_user
+      redirect_back fallback_location: login_path
+    end
+  end
 end
