@@ -1,3 +1,4 @@
+module SearchHelper
   def article_search(word)
     matches = []
     articles = Article.all
@@ -8,3 +9,4 @@
     end
     matches
   end
+end

@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  include SearchHelper
   def index
     @articles = Article.all
   end
@@ -47,6 +48,7 @@ class ArticlesController < ApplicationController
   def search
     # binding.pry
     #make array of articles that include the keyword (helper)
+    binding.pry
     @search_result_array = article_search(params[:word])
     render '/welcome/index'
   end
