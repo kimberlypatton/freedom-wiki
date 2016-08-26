@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
     @group = Group.find(params[:group_id])
     @category = @group.categories.find_or_create_by(category_params)
     if @category.save
-      redirect_to category_path(@category), notice: 'Category was created successfully.'
+      redirect_to group_categories_path(@group.id), notice: 'Category was created successfully.'
     else
       render :new
     end

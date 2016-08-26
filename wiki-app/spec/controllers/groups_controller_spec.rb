@@ -71,7 +71,7 @@ describe GroupsController do
       end
     end
   end
-binding.pry
+
     it "sets a notice that the group was created successfully" do
       post :create, { group: {name:"Name", description: "This is a group description."} }
       expect(flash[:notice]).to match /Group was created successfully/
