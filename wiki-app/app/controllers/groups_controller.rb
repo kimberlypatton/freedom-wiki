@@ -15,7 +15,6 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.categories << Category.find_by(name: "General")
-
     if @group.save
       Membership.create(user: current_user, group: @group, role: "admin")
       redirect_to group_path(@group), notice: 'Group was created successfully.'
