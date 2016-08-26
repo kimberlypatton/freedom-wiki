@@ -6,10 +6,13 @@ Ckeditor.setup do |config|
   # available as additional gems.
   require "ckeditor/orm/active_record"
 
+   config.assets_languages = ['en']
+
   # Allowed image file types for upload.
   # Set to nil or [] (empty array) for all file types
   # By default: %w(jpg jpeg png gif tiff)
   # config.image_file_types = %w(jpg jpeg png gif tiff)
+
 
   # Allowed flash file types for upload.
   # Set to nil or [] (empty array) for all file types
@@ -55,4 +58,11 @@ Ckeditor.setup do |config|
   # Used when CKEditor CDN enabled
   # By default: "/assets/ckeditor/config.js"
   # config.js_config_url = "/assets/ckeditor/config.js"
+
+   #handle custom addons
+  assets_root =  Rails.root.join('app','assets','javascripts')
+  ckeditor_plugins_root = assets_root.join('ckeditor','plugins')
+  %w(openlink sourcedialog widget footnotes).each do |ckeditor_plugin|
+    Ckeditor.assets += Dir[ckeditor_plugins_root.join(ckeditor_plugin, '**', '*.js')].map {|x| x.sub(assets_root.to_path, '').sub(/^\/+/, '')}
+  end
 end
