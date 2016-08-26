@@ -16,11 +16,16 @@ class ArticlesController < ApplicationController
     @group = Group.find(params[:group_id])
     @article = @group.articles.new(article_params)
     @article.user = current_user
-    if @article.save
+    if @article.save && @article.categories != []
       @category = Category.where(id: params[:category])
       @article.categories.push(@category)
       redirect_to article_path(@article), notice: 'Article was created successfully.'
+    elsif @article.save && @article.categories == []
+      @general = Category.find_by(name:"General")
+      @article.categories.push(@general)
+      redirect_to article_path(@article), notice: 'Article was created successfully.'
     else
+      flash[:error] = "No fields can be left empty"
       render :new
     end
   end
