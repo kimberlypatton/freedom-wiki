@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe GroupsController do
   let(:member){User.create(first_name: "Kimberly", last_name: "Patton", email:"kim@kim.com", password_digest: "1234567")}
-  binding.pry
   let(:group){member.groups.create(name:"Name", description: "This is a group description.")}
   let(:group2){Group.new(description: "This is a group description.")}
 
@@ -72,7 +71,7 @@ describe GroupsController do
       end
     end
   end
-binding.pry
+
     it "sets a notice that the group was created successfully" do
       post :create, { group: {name:"Name", description: "This is a group description."} }
       expect(flash[:notice]).to match /Group was created successfully/
