@@ -1,3 +1,21 @@
+table.admin-panel {
+    form {
+        margin: 0;
+        input {
+            margin: 0;
+        }
+        input#remove {
+            background-color: red;
+            color: #fff;
+        }
+        input#approve {
+            background-color: green;
+            color: #fff;
+        }
+    }
+}
+
+/* tab styles */
 .tab-content {
     display: none;
 }

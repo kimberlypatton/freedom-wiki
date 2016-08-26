@@ -1,0 +1,4 @@
+<%= button_to "Remove User", group_membership_path(membership.group_id, membership),
+                               method: :delete,
+                               data: { confirm: "Are you sure?" },
+                               id: "remove" %>

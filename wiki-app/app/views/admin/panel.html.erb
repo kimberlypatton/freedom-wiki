@@ -1,32 +1,46 @@
 <h1>Admin Panel</h1>
 
-<div class="container">
-  <div class="row">
-    <div class="five columns">
-      <h4>Categories</h4>
-    </div>
+<!-- tabs -->
+<ul class="tabs">
+    <li class="active"><span tab="#members">Members</span></li>
+    <li><span tab="#categories">Categories</span></li>
+    <li><span tab="#whole_self">Whole Self</span></li>
+</ul>
 
-    <div class="seven columns">
-      <h4>Members</h4>
-    </div>
-  </div>
+
+<!-- content -->
+<!-- member management -->
+<div class="tab-content" id="members">
+  <h4>Members</h4>
+
+  <table class="u-full-width admin-panel">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @group.memberships.each do |membership| %>
+      <tr>
+        <td><%= membership.user.fullname %></td>
+        <td><%= membership.role %></td>
+        <td>
+          <%= render partial: "admin/buttons/#{action_button(membership)}", locals: { membership: membership } %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </div>
 
+<!-- category management -->
+<div class="tab-content" id="categories">
+  <h4>Categories</h4>
+</div>
 
-    <ul class="tabs">
-        <li class="active"><span href="#integrity">Integrity</span></li>
-        <li><span href="#kindness">Kindness</span></li>
-        <li><span href="#whole_self">Whole Self</span></li>
-    </ul>
-
-    <div class="tab-content" id="integrity">
-      <h2>Integrity</h2>
-    </div>
-
-    <div class="tab-content" id="kindness">
-      <h2>Kindness</h2>
-    </div>
-
-    <div class="tab-content" id="whole_self">
-      <h2>Whole Self</h2>
-    </div>
+<div class="tab-content" id="whole_self">
+  <h4>Whole Self</h4>
+  <p>you are awesome, be yourself</p>
+</div>
