@@ -15,7 +15,7 @@ describe Article do
     end
   end
 
-  describe "group attributes" do
+  describe "attributes" do
     it "has a name" do
       expect(article.name).to eq "Sports is cool"
     end

@@ -13,7 +13,7 @@ describe Group do
     end
   end
 
-  describe "group attributes" do
+  describe "attributes" do
     it "has a name" do
       expect(group.name).to eq "Name"
     end
