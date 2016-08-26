@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 describe GroupsController do
   let(:member){User.create(first_name: "Kimberly", last_name: "Patton", email:"kim@kim.com", password_digest: "1234567")}
   let(:group){member.groups.create(name:"Name", description: "This is a group description.")}
