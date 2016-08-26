@@ -7,6 +7,8 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    @group = Group.find(params[:group_id])
+    @category_articles = @category.articles.where(group_id: @group)
   end
 
   def new
