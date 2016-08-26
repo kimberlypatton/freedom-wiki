@@ -10,6 +10,7 @@ class MembershipsController < ApplicationController
   def update
     membership = Membership.find(params[:id])
     membership.update(role: "member")
+    redirect_back fallback_location: group_admin_path(membership.group_id)
   end
 
   def destroy

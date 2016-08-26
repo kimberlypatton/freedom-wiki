@@ -27,7 +27,8 @@
         <td><%= membership.user.fullname %></td>
         <td><%= membership.role %></td>
         <td>
-          <%= render partial: "admin/buttons/#{action_button(membership)}", locals: { membership: membership } %>
+          <%= render partial: "admin/buttons/#{action_button(membership)}",
+                     locals: { membership: membership } %>
         </td>
       </tr>
     <% end %>
