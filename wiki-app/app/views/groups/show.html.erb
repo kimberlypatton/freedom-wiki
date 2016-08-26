@@ -1,13 +1,21 @@
 <h1><%= @group.name %></h1>
+<br>
+
+  <% @group.categories.each do |category| %>
+    <%= category.name %><br>
+    <% category.articles.each do |article| %>
+      <%= link_to article.name, article_path(article) %><br>
+    <% end %>
+  <% end %>
+<br>
+<%= link_to 'Create New Category', new_group_category_path(@group) %>
+<%= link_to 'Create New Article', new_group_article_path(@group) %>
+
 
 <% unless @group.members.include?(current_user) %>
   <div><%= button_to "Join Group", group_memberships_path(@group) %></div>
 <% end %>
 
-<% @group.articles.each do |article| %>
-  <%= link_to article.name, article_path(article) %><br>
-<% end %>
 
-<%= link_to 'Create New Article', new_group_article_path(@group) %>
 
 

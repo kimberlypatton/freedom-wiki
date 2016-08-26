@@ -1,0 +1,7 @@
+<%= form_for :category, url:"/groups/#{@group.id}/categories", method: :post do |f| %>
+    <%= f.label :name, 'Category Name'  %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.submit %>
+    <% end %>
+
