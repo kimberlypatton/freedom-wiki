@@ -24,8 +24,9 @@ class ArticlesController < ApplicationController
 
   def destroy
     article = Article.find(params[:id])
+    group = article.group
     article.destroy
-    redirect_to articles_url, notice: 'Article was deleted successfully.'
+    redirect_to group_path(group), notice: 'Article was deleted successfully.'
   end
 
    def edit
@@ -35,7 +36,7 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     if @article.update_attributes(article_params)
-      redirect_to articles_path, notice: "The article has been updated successfully."
+      redirect_to article_path(@article), notice: "The article has been updated successfully."
     else
       render action: "edit"
     end
