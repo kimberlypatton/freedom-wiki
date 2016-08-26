@@ -13,12 +13,16 @@
     <div class="profile-view">
       <div class="profile-view-header"></div>
         <p class="article-title"><%= article.name.capitalize %></p>
-        <p class="group-link">From Group: <%= link_to article.group.name, "/groups/#{article.group.id}" %></p>
-        <p><%= raw(article.content) %></p>
-        <ul>
-        <li class="group-link">Author: <%= article.user.fullname %></li><br>
-        <li class="group-link">Created: <%= article.created_at.strftime("%d %b. %Y") %></li>
-      </ul>
+        <% if article.group == nil || @search_result_array.length == 0 %>
+          <% "Article does not exist." %>
+        <% else  %>
+          <p class="group-link">From Group: <%= link_to article.group.name, "/groups/#{article.group.id}" %></p>
+          <p><%= raw(article.content) %></p>
+          <ul>
+            <li class="group-link">Author: <%= article.user.fullname %></li><br>
+            <li class="group-link">Created: <%= article.created_at.strftime("%d %b. %Y") %></li>
+          </ul>
+        <% end  %>
     </div>
   <% end %>
 <% end %>

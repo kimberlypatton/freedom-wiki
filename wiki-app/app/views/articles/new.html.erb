@@ -7,6 +7,9 @@
         <%= label_tag(category, category.name) %>
         <%= check_box_tag('category[]',category.id) %><br>
     <% end %>
+    <% @category = Category.find_by(name: "General") %>
+        <%= label_tag(@category, @category.name) %>
+        <%= check_box_tag('@category[]',@category.id) %><br>
     <%= f.submit %>
     <% end %>
 
