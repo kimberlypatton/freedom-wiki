@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
   has_many :members, :through => :memberships, :source => :user
 
   has_many :articles
+  has_and_belongs_to_many :categories
 
   def admin
     memberships.where(role: 'admin').first.user

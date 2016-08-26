@@ -25,7 +25,7 @@ describe GroupsController do
         expect(response).to have_http_status 200
       end
 
-      it "assigns the correct game as @group" do
+      it "assigns the correct group as @group" do
         get :show, { id: group.id }
         expect(assigns(:group)).to eq(group)
       end

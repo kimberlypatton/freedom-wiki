@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :groups do
+    resources :categories, shallow: true
     resources :articles, shallow: true
     resources :categories, shallow: true
     resources :memberships, only: [:create, :destroy, :update]
